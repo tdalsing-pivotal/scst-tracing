@@ -1,0 +1,12 @@
+server:
+  port: 8302
+
+spring:
+  sleuth:
+    integration:
+      enabled: true
+  cloud:
+    stream:
+      bindings:
+        consumer-in-0:
+          destination: sleuth

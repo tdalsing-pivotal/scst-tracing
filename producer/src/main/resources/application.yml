@@ -1,0 +1,12 @@
+server:
+  port: 8301
+
+spring:
+  sleuth:
+    integration:
+      enabled: true
+  cloud:
+    stream:
+      bindings:
+        output-out-0:
+          destination: sleuth
