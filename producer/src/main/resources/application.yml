@@ -1,12 +1,5 @@
-server:
-  port: 8301
+server.port: 8301
+spring.application.name: producer-app
+spring.sleuth.sampler.probability: 1.0
 
-spring:
-  sleuth:
-    integration:
-      enabled: true
-  cloud:
-    stream:
-      bindings:
-        output-out-0:
-          destination: sleuth
+spring.cloud.stream.bindings.output-out-0.destination: sleuth
