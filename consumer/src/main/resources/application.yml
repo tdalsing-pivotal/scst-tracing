@@ -1,5 +1,5 @@
 server.port: 8302
 spring.application.name: consumer-app
-spring.sleuth.sampler.probability: 1.0
+spring.sleuth.integration.enabled: true
 
 spring.cloud.stream.bindings.consumer-in-0.destination: sleuth
