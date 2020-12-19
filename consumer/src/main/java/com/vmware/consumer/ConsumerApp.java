@@ -23,7 +23,10 @@ public class ConsumerApp {
 
     @Bean
     public Consumer<Message<Map<String, Object>>> consumer() {
-        log.info("consumer");
-        return message -> log.info("consumer: message = {}", message);
+        return this::consume;
+    }
+
+    private void consume(Message<Map<String, Object>> message) {
+        log.info("message = {}", message);
     }
 }

@@ -1,12 +1,5 @@
-server:
-  port: 8302
+server.port: 8302
+spring.application.name: consumer-app
+spring.sleuth.integration.enabled: true
 
-spring:
-  sleuth:
-    integration:
-      enabled: true
-  cloud:
-    stream:
-      bindings:
-        consumer-in-0:
-          destination: sleuth
+spring.cloud.stream.bindings.consumer-in-0.destination: sleuth
