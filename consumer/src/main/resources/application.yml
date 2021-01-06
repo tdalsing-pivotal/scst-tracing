@@ -2,12 +2,11 @@ server:
   port: 8302
 
 spring:
+  application:
+    name: consumer-app
   sleuth:
     integration:
       enabled: true
-  zipkin:
-    service:
-      name: consumer-app
   cloud:
     stream:
       bindings:

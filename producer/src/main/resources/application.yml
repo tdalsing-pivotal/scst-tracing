@@ -2,12 +2,11 @@ server:
   port: 8301
 
 spring:
+  application:
+    name: producer-app
   sleuth:
     integration:
       enabled: true
-  zipkin:
-    service:
-      name: producer-app
   cloud:
     stream:
       bindings:
