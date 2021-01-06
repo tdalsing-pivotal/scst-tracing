@@ -5,6 +5,9 @@ spring:
   sleuth:
     integration:
       enabled: true
+  zipkin:
+    service:
+      name: producer-app
   cloud:
     stream:
       bindings:

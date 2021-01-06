@@ -5,6 +5,9 @@ spring:
   sleuth:
     integration:
       enabled: true
+  zipkin:
+    service:
+      name: consumer-app
   cloud:
     stream:
       bindings:
