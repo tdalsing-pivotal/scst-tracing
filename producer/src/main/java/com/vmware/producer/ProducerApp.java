@@ -31,16 +31,6 @@ public class ProducerApp {
         SpringApplication.run(ProducerApp.class, args);
     }
 
-//    @Bean(name = "output-out-0")
-//    public MessageChannel outputChannel(TracingChannelInterceptor interceptor, BindingService bindingService) {
-//        log.info("outputChannel");
-//        DirectWithAttributesChannel channel = new DirectWithAttributesChannel();
-//        channel.setAttribute("type", "output");
-//        channel.addInterceptor(interceptor);
-//        bindingService.bindProducer(channel, "output-out-0", false);
-//        return channel;
-//    }
-
     @PostMapping("/")
     @ResponseStatus(CREATED)
     public void post(@RequestBody Map<String, Object> data) {

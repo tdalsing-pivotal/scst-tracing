@@ -23,36 +23,29 @@ subprojects {
     }
 
     repositories {
-        jcenter()
         mavenCentral()
-        maven {
-            url 'https://repo.spring.io/milestone/'
-        }
-        maven {
-            url 'https://repo.spring.io/snapshot/'
-        }
     }
     
     dependencyManagement {
         imports {
-            mavenBom "org.springframework.cloud:spring-cloud-dependencies:2020.0.1"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:2020.0.2"
         }
         dependencies {
-            dependency "org.springframework.cloud:spring-cloud-stream-binder-kafka:3.1.1"
-            dependency "org.springframework.cloud:spring-cloud-sleuth-zipkin:3.0.1"
-            dependency "org.apache.commons:commons-lang3:3.11"
-            dependency "net.logstash.logback:logstash-logback-encoder:6.5"
+            dependency "org.springframework.cloud:spring-cloud-stream-binder-kafka:3.1.2"
+            dependency "org.springframework.cloud:spring-cloud-sleuth-zipkin:3.0.2"
+            dependency "org.apache.commons:commons-lang3:3.12.0"
+            dependency "net.logstash.logback:logstash-logback-encoder:6.6"
         }
     }
 
     dependencies {
-        compileOnly "org.projectlombok:lombok:1.18.16"
-        annotationProcessor "org.projectlombok:lombok:1.18.16"
+        compileOnly "org.projectlombok:lombok:1.18.20"
+        annotationProcessor "org.projectlombok:lombok:1.18.20"
 
-        testCompileOnly "org.projectlombok:lombok:1.18.16"
-        testAnnotationProcessor "org.projectlombok:lombok:1.18.16"
+        testCompileOnly "org.projectlombok:lombok:1.18.20"
+        testAnnotationProcessor "org.projectlombok:lombok:1.18.20"
 
-        testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.0"
+        testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.1"
     }
 
 }
