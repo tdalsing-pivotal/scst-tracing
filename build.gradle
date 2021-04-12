@@ -46,6 +46,19 @@ subprojects {
         testAnnotationProcessor "org.projectlombok:lombok:1.18.20"
 
         testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.1"
+        testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
     }
 
+    test {
+        useJUnitPlatform {
+            excludeTags 'post'
+        }
+    }
+
+    task postData(type: Test) {
+        useJUnitPlatform {
+            includeTags 'post'
+        }
+    }
 }
+

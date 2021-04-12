@@ -43,7 +43,7 @@ involved, which components participate in the span and trace, and potentially wh
 
 ![Zipkin](zipkin.png)
 
-## Running the Demo
+## Setting up Environment
 
 ### JDK
 
@@ -81,3 +81,22 @@ and writes the log entries to Elasticsearch.
 Kibana is used to query Elasticsearch, among other things.  It can be installed via Brew: `brew install kibana`, then follow the instructions in 
 `brew info kibana`.
 
+## Running Demo
+
+The apps can be started in an IDE or via Gradle:
+
+Terminal #1:
+`./gradlew :consumer:bootRun`
+
+Terminal #2:
+`./gradlew :producer:bootRun`
+
+To post data to the producer, run this in another terminal:
+
+`./post.sh`
+
+Now open the [Zipkin UI](http://localhost:9411/zipkin/).  Click on the "Run Query" button.  There should be 3 traces.
+
+Now open the [Kibana UI](http://localhost:5601/app/discover).  Enter "error" in the search field and click the "Refresh" button.  The HTTP call 
+with the error specified in the `post.sh` script will be shown.  Now find the `traceId` field and copy its value, then enter it in the search 
+field.  The entire trace is shown, including each span included in the trace and any log messages. 

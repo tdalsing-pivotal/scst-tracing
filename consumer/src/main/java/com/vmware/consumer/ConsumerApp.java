@@ -24,6 +24,12 @@ public class ConsumerApp {
     @Bean
     public Consumer<Message<Map<String, Object>>> consumer() {
         log.info("consumer");
-        return message -> log.info("consumer: message = {}", message);
+        return message -> {
+            if (Boolean.TRUE.equals(message.getPayload().get("error"))) {
+                log.error("consumer: message = {}", message);
+            } else {
+                log.info("consumer: message = {}", message);
+            }
+        };
     }
 }
