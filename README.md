@@ -1,7 +1,7 @@
 # SCSt Sleuth
 
 This repo contains a demo of using [Spring Cloud Stream](https://spring.io/projects/spring-cloud-stream) with 
-[Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth).  Sleuth is a module that adds traceability to MVC 
+[Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth).  Sleuth is a module that adds traceability to Spring MVC 
 request/response and to messages sent via Spring Cloud Stream.  Tracing of requests, responses, and messages can span multiple, separate 
 microservices.  This allows the tracing of a single request or message across a large system, which is invaluable to debugging complex 
 applications that encompass many different microservices. 
@@ -40,3 +40,44 @@ Note that other log aggregation tools, such as Splunk, will also work since the 
 Zipkin is a tool to visualize traces and spans.  For a given trace it shows the components and spans involved in the trace.  It also shows where 
 sequential and parallel flows occur and their relationship.  This is a very powerful tool since it visualizes the entire trace, which spans are 
 involved, which components participate in the span and trace, and potentially where the error was first recorded.
+
+![Zipkin](zipkin.png)
+
+## Running the Demo
+
+### JDK
+
+JDK 11+ must be installed to run the demo.
+
+### Kafka
+
+This demo uses Kafka, so the first step is to get it running locally.  On Mac use Brew: `brew install kafka`.  This installs the Apache version.  
+Kafka uses Zookeeper for cluster management, which is included with the Brew install.  Kafka requires JDK 1.8+.
+
+To get the startup information use `brew info kafka`.  Note that the Brew service (`brew services start kafka`) is sometimes flaky, and doesn't
+show what Kafka and Zookeeper are doing, so generally it's best to use the non-background services.  However, the recommended non-background
+method shown in the info isn't always reliable either.  The reliable way to run Kafka is to run Zookeeper in one terminal:
+
+`zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties`
+
+Once that is up and running start the Kafka broker:
+
+`kafka-server-start /usr/local/etc/kafka/server.properties`
+
+Topics are automatically created by the SCSt applications when they are started.
+
+### Zipkin
+
+Zipkin is deployed as a bootable JAR.  Either run it directly or use Docker.  Follow the instructions [here](https://zipkin.io/pages/quickstart).  
+By default no database or other external dependencies are required (in production a database would be used to store the traces).
+
+### Elasticsearch, Logstash, and Kibana
+
+Elasticsearch can be installed via Brew: `brew install elasticsearch`, then follow the instructions shown in `brew info elasticsearch`.
+
+Logstash can be installed via Brew: `brew install logstash`, the follow the instructions in `brew info logstash`.  Logstash tails the log files 
+and writes the log entries to Elasticsearch.
+
+Kibana is used to query Elasticsearch, among other things.  It can be installed via Brew: `brew install kibana`, then follow the instructions in 
+`brew info kibana`.
+
