@@ -35,6 +35,8 @@ output for the trace or span in one place.  This can also show the sequence of e
 
 Note that other log aggregation tools, such as Splunk, will also work since the UUIDs are simply part of the log output.
 
+Elasticsearch is not used in this demo.
+
 ## Zipkin
 
 Zipkin is a tool to visualize traces and spans.  For a given trace it shows the components and spans involved in the trace.  It also shows where 
@@ -71,16 +73,6 @@ Topics are automatically created by the SCSt applications when they are started.
 Zipkin is deployed as a bootable JAR.  Either run it directly or use Docker.  Follow the instructions [here](https://zipkin.io/pages/quickstart).  
 By default no database or other external dependencies are required (in production a database would be used to store the traces).
 
-### Elasticsearch, Logstash, and Kibana
-
-Elasticsearch can be installed via Brew: `brew install elasticsearch`, then follow the instructions shown in `brew info elasticsearch`.
-
-Logstash can be installed via Brew: `brew install logstash`, the follow the instructions in `brew info logstash`.  Logstash tails the log files 
-and writes the log entries to Elasticsearch.
-
-Kibana is used to query Elasticsearch, among other things.  It can be installed via Brew: `brew install kibana`, then follow the instructions in 
-`brew info kibana`.
-
 ## Running Demo
 
 The apps can be started in an IDE or via Gradle:
@@ -96,7 +88,3 @@ To post data to the producer, run this in another terminal:
 `./post.sh`
 
 Now open the [Zipkin UI](http://localhost:9411/zipkin/).  Click on the "Run Query" button.  There should be 3 traces.
-
-Now open the [Kibana UI](http://localhost:5601/app/discover).  Enter "error" in the search field and click the "Refresh" button.  The HTTP call 
-with the error specified in the `post.sh` script will be shown.  Now find the `traceId` field and copy its value, then enter it in the search 
-field.  The entire trace is shown, including each span included in the trace and any log messages. 
