@@ -1,6 +1,7 @@
 package com.vmware.producer;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.client.RestTemplate;
@@ -8,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Map;
 
 @Slf4j
+@Tag("post")
 public class ProducerTest {
 
     RestTemplate restTemplate = new RestTemplateBuilder().build();
