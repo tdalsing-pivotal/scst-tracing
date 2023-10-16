@@ -4,11 +4,20 @@ server:
 spring:
   application:
     name: producer-app
-  sleuth:
-    integration:
-      enabled: true
   cloud:
     stream:
       bindings:
         output-out-0:
-          destination: sleuth
+          destination: tracing
+      kafka:
+        binder:
+          enableObservation: true
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+logging:
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'

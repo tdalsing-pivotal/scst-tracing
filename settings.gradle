@@ -1,4 +1,4 @@
-rootProject.name = 'scst-sleuth'
+rootProject.name = 'scst-tracing'
 
 include 'producer'
 include 'consumer'
